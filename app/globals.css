@@ -7,3 +7,12 @@ body,
 :root {
   height: 100%;
 }
+
+.scrollbar::-webkit-scrollbar {
+  height: 5px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: #fe5b60;
+  border-radius: 3px;
+}

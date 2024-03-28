@@ -1,3 +1,3 @@
 export default function Home() {
-  return <main className="text-5xl text-red-500">Hello Airbnb</main>;
+  return <main className="text-5xl text-red-500"></main>;
 }
