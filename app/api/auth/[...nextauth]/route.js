@@ -5,10 +5,23 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import mongoose from 'mongoose';
 import { User } from '../../models/UsersModel';
 import bcrypt from 'bcrypt';
-const handler = NextAuth({
+import GitHubProvider from 'next-auth/providers/github';
+import GoogleProvider from 'next-auth/providers/google';
+
+export const authOptions = {
   secret: process.env.NEXT_PUBLIC_SECRET,
   adapter: MongoDBAdapter(clientPromise),
+
   providers: [
+    GoogleProvider({
+      clientId: process.env.NEXT_PUBLIC_GOOGLE_ID,
+      clientSecret: process.env.NEXT_PUBLIC_GOOGLE_SECRET,
+    }),
+    GitHubProvider({
+      clientId: process.env.NEXT_PUBLIC_GITHUB_ID,
+      clientSecret: process.env.NEXT_PUBLIC_GITHUB_SECRET,
+    }),
+
     CredentialsProvider({
       name: 'credentials',
       credentials: {
@@ -23,7 +36,7 @@ const handler = NextAuth({
       async authorize(credentials) {
         await mongoose.connect(process.env.NEXT_PUBLIC_Mongodb_url);
         const { email, password } = credentials;
-        console.log(email, password);
+        // console.log(email, password);
 
         // first search for an email if it is exist in database or not
         const user = await User.findOne({ email });
@@ -49,6 +62,7 @@ const handler = NextAuth({
   pages: {
     signIn: '/login',
   },
-});
+};
 
+const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };

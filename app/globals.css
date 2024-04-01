@@ -10,9 +10,16 @@ body,
 
 .scrollbar::-webkit-scrollbar {
   height: 5px;
+  width: 5px;
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
   background: #fe5b60;
   border-radius: 3px;
 }
+/* sizing of map container */
+/* .leaflet-container {
+  height: 350px;
+  width: auto;
+  border-radius: 5px;
+} */
