@@ -1,16 +1,16 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
+import ListPages from '../components/listing/ListPages';
 import React, { useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { signOut, useSession } from 'next-auth/react';
-import { useRouter, useSearchParams } from 'next/navigation';
-import ListPages from '../components/listing/ListPages';
+import { useRouter } from 'next/navigation';
+import Button from './Button';
+
 export default function Navbar() {
   const [isListOpen, setIsListOpen] = useState(false);
-  const searchParams = useSearchParams();
-  // console.log(searchParams.get('createList'));
   const session = useSession();
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
@@ -33,25 +33,35 @@ export default function Navbar() {
           Any Week
         </h1>
         <h1 className="cursor-pointer text-gray-400 text-nowrap hidden sm:block">
-          Add Gests
+          Add guests
         </h1>
         <div className=" cursor-pointer bg-primary p-3 rounded-full text-white">
           <FiSearch />
         </div>
       </div>
       <div className="flex flex-col-reverse sm:flex-row items-center gap-4">
-        <div
-          onClick={() => {
-            router.push('?createList=page1');
-            setIsListOpen(true);
-          }}
-          className="font-bold hidden lg:block text-nowrap cursor-pointer bg-gray-200 hover:bg-primary hover:text-white rounded-full p-2"
-        >
-          Airbnb Tour Home
-        </div>
+        {session?.status === 'authenticated' ? (
+          <h1
+            onClick={() => {
+              router.push('?createList=page1');
+              setIsListOpen(true);
+            }}
+            className="font-bold hidden lg:block text-nowrap cursor-pointer bg-gray-200 hover:bg-primary hover:text-white rounded-full p-2"
+          >
+            Airbnb Tour Home
+          </h1>
+        ) : (
+          <Link
+            href={'/login'}
+            className="font-bold hidden lg:block text-nowrap cursor-pointer bg-primary text-white rounded-full p-2"
+          >
+            Login
+          </Link>
+        )}
         {isListOpen && (
           <ListPages isListOpen={isListOpen} setIsListOpen={setIsListOpen} />
         )}
+
         <div
           className="flex items-center gap-2 border rounded-full p-2  hover:shadow-lg  "
           onClick={() => setIsOpen(!isOpen)}
@@ -98,37 +108,31 @@ export default function Navbar() {
                     </h1>
 
                     <hr />
-                    <h1
-                      className="hover:bg-primary hover:shadow-xl hover:shadow-primary hover:text-white text-sm p-2 rounded-md "
-                      onClick={() => {
-                        signOut({ callbackUrl: '/' });
-                        setIsOpen(false);
-                      }}
-                    >
-                      Logout
-                    </h1>
+                    <div className="mt-3">
+                      <Button
+                        type={'two'}
+                        name={'Logout'}
+                        className="hover:bg-primary hover:shadow-xl hover:shadow-primary hover:text-white text-sm p-2 rounded-md "
+                        onClick={() => {
+                          signOut({ callbackUrl: '/' });
+                          setIsOpen(false);
+                        }}
+                      />
+                    </div>
                   </div>
                 )}
                 {session?.status === 'unauthenticated' && (
                   <div className="absolute px-4 py-2 w-44 bg-white border rounded-xl -right-8 top-8">
-                    <h1
-                      className="hover:bg-primary hover:shadow-xl hover:shadow-primary hover:text-white text-sm p-2 rounded-md "
-                      onClick={() => {
-                        setIsOpen(false);
-                        router.push('/login');
-                      }}
-                    >
-                      Login
-                    </h1>
-                    <h1
-                      className="hover:bg-primary hover:shadow-xl hover:shadow-primary hover:text-white text-sm p-2 rounded-md "
-                      onClick={() => {
-                        setIsOpen(false);
-                        router.push('/register');
-                      }}
-                    >
-                      Sign up
-                    </h1>
+                    <Link href={'/login'}>
+                      <h1 className="hover:bg-primary hover:shadow-xl hover:shadow-primary hover:text-white text-sm p-2 rounded-md ">
+                        Login
+                      </h1>
+                    </Link>
+                    <Link href={'/register'}>
+                      <h1 className="hover:bg-primary hover:shadow-xl hover:shadow-primary hover:text-white text-sm p-2 rounded-md ">
+                        Sign up
+                      </h1>
+                    </Link>
                   </div>
                 )}
               </>
