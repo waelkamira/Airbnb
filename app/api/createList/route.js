@@ -14,3 +14,10 @@ export async function GET() {
   const lists = await List.find();
   return Response.json(lists);
 }
+
+export async function PUT(req) {
+  await mongoose.connect(process.env.NEXT_PUBLIC_Mongodb_url);
+  const { _id, ...data } = await req.json();
+  const updateList = await List.findByIdAndUpdate({ _id }, { ...data });
+  return Response.json(updateList);
+}

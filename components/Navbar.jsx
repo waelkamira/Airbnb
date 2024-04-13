@@ -15,6 +15,13 @@ export default function Navbar() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
 
+  function handleLogout() {
+    if (window !== 'undefined') {
+      localStorage.removeItem('reservation');
+    }
+    signOut({ callbackUrl: '/' });
+    setIsOpen(false);
+  }
   return (
     <div className="flex justify-between items-center px-4 sm:px-20 py-4 border-b">
       <Link href={'/'} className="hidden md:block">
@@ -72,30 +79,30 @@ export default function Navbar() {
               <>
                 {session?.status === 'authenticated' && (
                   <div className="absolute px-4 py-4 w-44 bg-white border rounded-xl right-2 top-8 z-50">
-                    <h1
-                      className="hover:bg-primary hover:shadow-xl hover:shadow-primary hover:text-white text-sm p-2 rounded-md "
-                      onClick={() => setIsOpen(false)}
-                    >
-                      My Trips
-                    </h1>
-                    <h1
-                      className="hover:bg-primary hover:shadow-xl hover:shadow-primary hover:text-white text-sm p-2 rounded-md "
-                      onClick={() => setIsOpen(false)}
-                    >
-                      My Favorites
-                    </h1>
-                    <h1
-                      className="hover:bg-primary hover:shadow-xl hover:shadow-primary hover:text-white text-sm p-2 rounded-md "
-                      onClick={() => setIsOpen(false)}
-                    >
-                      My Reservations
-                    </h1>
-                    <h1
-                      className="hover:bg-primary hover:shadow-xl hover:shadow-primary hover:text-white text-sm p-2 rounded-md "
-                      onClick={() => setIsOpen(false)}
-                    >
-                      My Properties
-                    </h1>
+                    <Link href={'/favorites'}>
+                      <h1
+                        className="hover:bg-primary hover:shadow-xl hover:shadow-primary hover:text-white text-sm p-2 rounded-md "
+                        onClick={() => setIsOpen(false)}
+                      >
+                        My Favorites
+                      </h1>
+                    </Link>
+                    <Link href={'/reservations'}>
+                      <h1
+                        className="hover:bg-primary hover:shadow-xl hover:shadow-primary hover:text-white text-sm p-2 rounded-md "
+                        onClick={() => setIsOpen(false)}
+                      >
+                        My Reservations
+                      </h1>
+                    </Link>
+                    <Link href={'/properties'}>
+                      <h1
+                        className="hover:bg-primary hover:shadow-xl hover:shadow-primary hover:text-white text-sm p-2 rounded-md "
+                        onClick={() => setIsOpen(false)}
+                      >
+                        My Properties
+                      </h1>
+                    </Link>
                     <h1
                       className="hover:bg-primary hover:shadow-xl hover:shadow-primary hover:text-white text-sm p-2 rounded-md "
                       onClick={() => {
@@ -106,23 +113,24 @@ export default function Navbar() {
                     >
                       Airbnb Your Home
                     </h1>
-
                     <hr />
+                    <Link href={'/'} className={'w-1/5'}>
+                      <div className="mt-2">
+                        <Button name={'Home'} type={'two'} />
+                      </div>
+                    </Link>
                     <div className="mt-3">
                       <Button
                         type={'two'}
                         name={'Logout'}
                         className="hover:bg-primary hover:shadow-xl hover:shadow-primary hover:text-white text-sm p-2 rounded-md "
-                        onClick={() => {
-                          signOut({ callbackUrl: '/' });
-                          setIsOpen(false);
-                        }}
+                        onClick={() => handleLogout()}
                       />
                     </div>
                   </div>
                 )}
                 {session?.status === 'unauthenticated' && (
-                  <div className="absolute px-4 py-2 w-44 bg-white border rounded-xl -right-8 top-8">
+                  <div className="absolute px-4 py-2 w-44 bg-white border rounded-xl -right-8 top-8 z-50">
                     <Link href={'/login'}>
                       <h1 className="hover:bg-primary hover:shadow-xl hover:shadow-primary hover:text-white text-sm p-2 rounded-md ">
                         Login

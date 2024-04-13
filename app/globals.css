@@ -17,9 +17,11 @@ body,
   background: #fe5b60;
   border-radius: 3px;
 }
-/* sizing of map container */
-/* .leaflet-container {
-  height: 350px;
-  width: auto;
-  border-radius: 5px;
-} */
+
+.rdrMonth {
+  width: 100% !important;
+}
+.rdrCalendarWrapper {
+  /* font-size: 16px !important; */
+  width: 100% !important;
+}

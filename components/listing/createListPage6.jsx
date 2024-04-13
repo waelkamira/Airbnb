@@ -39,7 +39,7 @@ export default function createListPage6({ setIsListOpen }) {
         const response = await fetch('/api/createList', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(listValues),
+          body: JSON.stringify({ ...listValues, price: +price }),
         });
         if (response.ok) {
           resolve();

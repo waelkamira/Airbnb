@@ -19,9 +19,11 @@ export default function RootLayout({ children }) {
       <body className={font.className}>
         <AuthContext>
           <Toaster />
-          <Navbar />
-          <Categories />
-          {children}
+          <div>
+            <Navbar />
+            <Categories />
+          </div>
+          <div>{children}</div>
         </AuthContext>
       </body>
     </html>

@@ -32,6 +32,7 @@ export default function CreateListPage1({ setIsListOpen }) {
       localStorage.setItem(
         'listValues',
         JSON.stringify({
+          favorite: false,
           email: session?.data?.user?.email,
           category: value,
         })

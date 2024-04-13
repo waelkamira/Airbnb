@@ -10,8 +10,8 @@ import { BiImageAdd } from 'react-icons/bi';
 //? NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME="dh2xlutfu"
 //? unsigned و نضعه cloudinary على Preset نقوم بعمل
 
-export default function ImageUpload() {
-  const [imageUrl, setImageUrl] = useState('');
+export default function ImageUpload({ image }) {
+  const [imageUrl, setImageUrl] = useState(image);
 
   useEffect(() => {
     if (window !== 'undefined') {
@@ -56,11 +56,11 @@ export default function ImageUpload() {
           return (
             <div
               onClick={() => open()}
-              className="relative flex flex-col justify-center items-center h-56 w-full border border-dashed cursor-pointer"
+              className="relative flex flex-col justify-center items-center h-56 md:h-96 w-full border border-dashed cursor-pointer"
             >
               {imageUrl && (
                 <div className="h-full w-full">
-                  <Image src={imageUrl} fill style={{ objectFit: 'cover' }} />
+                  <Image src={imageUrl} fill style={{ objectFit: 'contain' }} />
                 </div>
               )}
               {!imageUrl && (

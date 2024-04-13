@@ -1,9 +1,10 @@
 'use client';
 import icons from './Icons';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 
 export default function Categories() {
+  const path = usePathname();
   const session = useSession();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -13,7 +14,7 @@ export default function Categories() {
 
   return (
     <>
-      {session?.status === 'authenticated' && (
+      {session?.status === 'authenticated' && path === '/' && (
         <div className="flex justify-between md:px-20 scrollbar overflow-x-auto border-b">
           {icons.map((item) => {
             return (

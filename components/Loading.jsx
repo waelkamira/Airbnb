@@ -1,12 +1,12 @@
 'use client';
 import React from 'react';
-import GearIcon from '@rsuite/icons/Gear';
+import { BsGear } from 'react-icons/bs';
 
 export default function Loading() {
   return (
-    <div className="animate-pulse flex justify-center items-center text-xl gap-4">
-      <GearIcon spin style={{ fontSize: '1em' }} />
-      Is Loading...
+    <div className="flex justify-center items-center text-xl gap-4">
+      <BsGear className="animate-spin text-primary" />
+      Loading ...
     </div>
   );
 }
