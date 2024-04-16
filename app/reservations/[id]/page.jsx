@@ -11,7 +11,7 @@ import { DateRange } from 'react-date-range';
 import toast from 'react-hot-toast';
 import { useSession } from 'next-auth/react';
 
-export default function page() {
+export default function Page() {
   const [list, setList] = useState('');
 
   const { id } = useParams();

@@ -40,7 +40,7 @@ export default function Reservations() {
         {reservations?.length === 0 && (
           <div className="flex flex-col items-center justify-center gap-4 mt-64">
             <h1 className="text-md sm:text-2xl">
-              You Don't Have Any Reservation Yet!
+              You Don&apos;t Have Any Reservation Yet!
             </h1>
             <h1 className="text-md sm:text-2xl text-gray-400">Go Back </h1>
             <Link href={'/'} className={'w-1/5'}>

@@ -11,7 +11,7 @@ import toast from 'react-hot-toast';
 import ImageUpload from '../../../components/ImageUpload';
 import Button from '../../../components/Button';
 
-export default function page() {
+export default function Page() {
   const [list, setList] = useState('');
   const [updateValues, setUpdateValues] = useState({
     newPrice: null,

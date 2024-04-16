@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import Button from '../../components/Button';
 import Link from 'next/link';
 
-export default function page() {
+export default function Page() {
   const [lists, setLists] = useState([]);
 
   useEffect(() => {
@@ -45,7 +45,7 @@ export default function page() {
       {lists?.length === 0 && (
         <div className="flex flex-col items-center justify-center gap-4 mt-64">
           <h1 className="text-md sm:text-2xl">
-            You Didn't Favorite Any List Yet!
+            You Didn&apos;t Favorite Any List Yet!
           </h1>
           <h1 className="text-md sm:text-2xl text-gray-400">Go Back </h1>
           <Link href={'/'} className={'w-1/5'}>

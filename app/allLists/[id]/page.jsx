@@ -7,7 +7,7 @@ import Skelton from '../../../components/Skelton';
 import Map from '../../../components/map/Map';
 import DateCalendar from '../../../components/calendar/DateCalendar';
 import { useSession } from 'next-auth/react';
-export default function page() {
+export default function Page() {
   const [list, setList] = useState('');
   const session = useSession();
   const { id } = useParams();

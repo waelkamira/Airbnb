@@ -7,6 +7,7 @@ import { ListRendering } from '../../components/ListRendering';
 export default function AllLists() {
   const [lists, setLists] = useState([]);
   const searchParams = useSearchParams();
+
   const path = usePathname();
   useEffect(() => {
     fetchAllLists();

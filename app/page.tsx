@@ -1,4 +1,4 @@
-import AllLists from './allLists/page';
+import AllLists from './allLists/Page';
 export default function Home() {
   return (
     <main className="p-8">

@@ -3,7 +3,7 @@ import Button from '../../components/Button';
 import { ListRendering } from '../../components/ListRendering';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-export default function page() {
+export default function Page() {
   const [properties, setProperties] = useState([]);
   useEffect(() => {
     fetchProperties();
