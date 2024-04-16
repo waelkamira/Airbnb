@@ -12,15 +12,17 @@ export default function CreateListPage1({ setIsListOpen }) {
   const session = useSession();
   const [isCategoryActive, setIsCategoryActive] = useState('');
   const router = useRouter();
+  useEffect(() => {
+    const listValues = JSON.parse(localStorage.getItem('listValues'));
+    if (listValues === null) {
+      return;
+    }
+    setIsCategoryActive(listValues?.category);
+  }, []);
 
   if (session?.status === 'unauthenticated') {
     return;
   }
-
-  useEffect(() => {
-    const listValues = JSON.parse(localStorage.getItem('listValues'));
-    setIsCategoryActive(listValues?.category);
-  }, []);
 
   function handleClick(value) {
     if (window !== 'undefined') {
