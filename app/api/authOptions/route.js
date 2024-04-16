@@ -1,9 +1,8 @@
-import NextAuth from 'next-auth';
-import clientPromise from '../../../../lib/mongodb';
+import clientPromise from '../../../lib/mongodb';
 import { MongoDBAdapter } from '@auth/mongodb-adapter';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import mongoose from 'mongoose';
-import { User } from '../../models/UsersModel';
+import { User } from '../models/UsersModel';
 import bcrypt from 'bcrypt';
 import GitHubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
@@ -62,6 +61,3 @@ export const authOptions = {
     signIn: '/login',
   },
 };
-
-const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST };

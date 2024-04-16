@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { List } from '../models/ListModel';
-import { authOptions } from '../auth/[...nextauth]/route';
+import { authOptions } from '../authOptions/route';
 import { getServerSession } from 'next-auth';
 
 export async function GET() {

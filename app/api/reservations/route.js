@@ -1,7 +1,7 @@
 import { mongoose } from 'mongoose';
 import { Reservation } from '../models/Reservations';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '../auth/[...nextauth]/route';
+import { authOptions } from '../authOptions/route';
 
 export async function POST(req) {
   await mongoose.connect(process.env.NEXT_PUBLIC_Mongodb_url);
