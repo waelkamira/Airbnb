@@ -5,7 +5,7 @@ import { icon } from 'leaflet';
 
 export default function Map({ latlng }) {
   //?  select حصلنا عليها من قيمة ال latlng
-  // console.log(latlng);
+
   const Icon = icon({
     iconUrl:
       'https://images.vexels.com/media/users/3/131261/isolated/lists/b2e48580147ca0ed3f970f30bf8bb009-map-location-marker.png',

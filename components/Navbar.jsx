@@ -8,9 +8,10 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Button from './Button';
-
+import SearchPage from '../components/search/Search';
 export default function Navbar() {
   const [isListOpen, setIsListOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const session = useSession();
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +25,11 @@ export default function Navbar() {
   }
   return (
     <div className="flex justify-between items-center px-4 sm:px-20 py-4 border-b">
-      <Link href={'/'} className="hidden md:block">
+      <Link
+        href={'/'}
+        className="hidden md:block"
+        onClick={() => router.push('/')}
+      >
         <div className="relative h-8 w-24 ">
           <Image
             src={'/images/logo.png'}
@@ -34,22 +39,22 @@ export default function Navbar() {
           />
         </div>
       </Link>
-      <div className="flex justify-between items-center rounded-full border gap-8 mx-2 px-1 py-1 font-bold hover:shadow-md grow md:grow-0">
-        <h1 className=" cursor-pointer text-nowrap pl-2">Anywhere</h1>
-        <h1 className="cursor-pointer border-l border-r px-4 text-nowrap hidden sm:block">
-          Any Week
-        </h1>
-        <h1 className="cursor-pointer text-gray-400 text-nowrap hidden sm:block">
-          Add guests
-        </h1>
-        <div className=" cursor-pointer bg-primary p-3 rounded-full text-white">
-          <FiSearch />
-        </div>
+
+      <div className="w-full sm:w-2/3 lg:w-1/2 xl:w-1/3 mx-4">
+        <SearchPage />
       </div>
+
       <div className="flex flex-col-reverse sm:flex-row items-center gap-4">
         {session?.status === 'authenticated' ? (
           <h1
             onClick={() => {
+              const queryParams = new URLSearchParams(window.location.search);
+              queryParams.delete('country', 'createList');
+              history.replaceState(
+                null,
+                '',
+                window.location.pathname + '?' + queryParams.toString()
+              );
               router.push('?createList=page1');
               setIsListOpen(true);
             }}

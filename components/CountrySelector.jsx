@@ -19,6 +19,8 @@ export default function Countries() {
   const router = useRouter();
   //? onChange في خيار setState عن طريق state لتحديد القيمة الافتراضية وتحديث هذه ال  state يجب عمل
   const [selectedCountry, setSelectedCountry] = useState('');
+
+  router.push(`?createList=page2`);
   //? objects يجب ان يكتبوا بهذه الطريقة على شكل options الخيارات
   //?formattedCountries اسمها array نريد فقط هذه البيانات والتي نضعها في  countries لاننا لانريد جلب كل البيانات من
   const formattedCountries = countries.map((country) => ({
@@ -32,7 +34,7 @@ export default function Countries() {
   useEffect(() => {
     if (window !== 'undefined') {
       const listValues = JSON.parse(localStorage.getItem('listValues'));
-      // console.log('listValues', listValues);
+
       if (listValues === null) {
         return;
       }
@@ -54,10 +56,11 @@ export default function Countries() {
   //   };
   // };
 
-  //?them prop لتغيير اللون الاساسي للتحديد ويتغير معه لون البوردر يجب وضعها في
+  //?them prop هذا خاض بتعديل شكل ولون العنصر كله لتغيير اللون الاساسي للتحديد ويتغير معه لون البوردر يجب وضعها في
   function customTheme(theme) {
     return {
       ...theme,
+      // borderRadius: 0,
       colors: {
         ...theme.colors,
         primary: '#F16667',
@@ -72,6 +75,7 @@ export default function Countries() {
   //     return {
   //       ...styles,
   //       backgroundColor: '#FFFFFF',
+  //        borderRadius: 20,
   //     };
   //   },
   // };

@@ -12,7 +12,6 @@ import { useSession } from 'next-auth/react';
 export default function DateCalendar({ price }) {
   const router = useRouter();
   const session = useSession();
-  // console.log(session);
   const [state, setState] = useState([
     {
       startDate: new Date(),
@@ -20,8 +19,7 @@ export default function DateCalendar({ price }) {
       key: 'selection',
     },
   ]);
-  // console.log(state[0]?.startDate);
-  // console.log(state[0]?.endDate);
+
   const date = state[0]?.endDate.getDate() - state[0]?.startDate.getDate();
   const days = date + 1;
   const total = days * price;

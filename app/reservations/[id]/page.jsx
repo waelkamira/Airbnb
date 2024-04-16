@@ -16,7 +16,7 @@ export default function page() {
 
   const { id } = useParams();
   const [state, setState] = useState([,]);
-  console.log('state', state);
+
   useEffect(() => {
     fetchAllLists();
   }, []);
@@ -26,7 +26,7 @@ export default function page() {
       .then((res) => res.json())
       .then((res) => {
         const list = res?.find((list) => list._id === id);
-        console.log('list', list);
+
         setList(list);
         setState([
           {
@@ -96,6 +96,7 @@ export default function page() {
                     moveRangeOnFirstSelection={false}
                     ranges={state}
                     showDateDisplay={false}
+                    // showSelectionPreview={true}
                   />
 
                   <h1 className="flex justify-between p-2 font-bold text-lg">

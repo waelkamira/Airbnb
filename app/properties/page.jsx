@@ -13,20 +13,16 @@ export default function page() {
     await fetch('/api/properties')
       .then((res) => res.json())
       .then((res) => {
-        // console.log('res', res);
         setProperties(res);
       });
   };
 
   async function handleClick(pro) {
-    console.log(pro);
-
     const response = await fetch('/api/properties', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(pro),
     });
-    console.log(response);
     if (response.ok) {
       toast.success('This Property Deleted');
       fetchProperties();

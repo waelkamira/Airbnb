@@ -14,7 +14,14 @@ export async function GET() {
   const session = await getServerSession(authOptions);
   const email = session?.user?.email;
   const reservations = await Reservation.find({ email });
-  console.log('email', email);
-  console.log('reservations', reservations);
+
   return Response.json(reservations);
+}
+
+export async function DELETE(req) {
+  await mongoose.connect(process.env.NEXT_PUBLIC_Mongodb_url);
+  const { _id } = await req.json();
+  const updateList = await Reservation.findByIdAndDelete({ _id });
+
+  return Response.json('Deleted');
 }

@@ -44,7 +44,6 @@ export default function createListPage6({ setIsListOpen }) {
         if (response.ok) {
           resolve();
           localStorage.removeItem('listValues');
-          console.log(response);
           setIsListOpen(false);
           router.push('/');
         } else {

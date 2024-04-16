@@ -20,8 +20,7 @@ export default function page() {
       .then((res) => res.json())
       .then((res) => {
         const list = res?.find((list) => list._id === id);
-        // console.log('res', res);
-        console.log('list', list);
+
         if (list !== undefined) {
           const { _id, ...otherProps } = list;
           const newList = { ...otherProps };

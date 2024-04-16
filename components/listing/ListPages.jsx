@@ -8,15 +8,18 @@ import CreateListPage4 from './createListPage4';
 import CreateListPage5 from './createListPage5';
 import CreateListPage6 from './createListPage6';
 import { useRouter, useSearchParams } from 'next/navigation';
+
 export default function ListPages({ isListOpen, setIsListOpen }) {
+  const searchParams = useSearchParams();
+  const session = useSession();
+  const router = useRouter();
+
   if (window !== 'undefined') {
     window.onbeforeunload = () => {
       localStorage.removeItem('listValues');
     };
   }
-  const searchParams = useSearchParams();
-  const session = useSession();
-  const router = useRouter();
+
   if (!session?.data?.user) {
     router.push('/login');
     return;

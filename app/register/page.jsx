@@ -42,11 +42,9 @@ export default function RegisterPage({ setIsListOpen }) {
       });
 
       if (response.ok) {
-        // console.log(getValues());
         toast.success('Success');
         router.push('/login');
       } else {
-        console.log(response?.error);
         setError('email', {
           type: 'custom',
           message: 'this email is already exist try to login',

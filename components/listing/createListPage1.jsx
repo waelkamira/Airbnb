@@ -12,7 +12,6 @@ export default function CreateListPage1({ setIsListOpen }) {
   const session = useSession();
   const [isCategoryActive, setIsCategoryActive] = useState('');
   const router = useRouter();
-  // console.log('isCategoryActive', isCategoryActive);
 
   if (session?.status === 'unauthenticated') {
     return;
@@ -20,7 +19,6 @@ export default function CreateListPage1({ setIsListOpen }) {
 
   useEffect(() => {
     const listValues = JSON.parse(localStorage.getItem('listValues'));
-    // console.log('listValues', listValues);
     if (listValues === null) {
       return;
     }

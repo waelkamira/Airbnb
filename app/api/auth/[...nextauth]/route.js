@@ -36,7 +36,6 @@ export const authOptions = {
       async authorize(credentials) {
         await mongoose.connect(process.env.NEXT_PUBLIC_Mongodb_url);
         const { email, password } = credentials;
-        // console.log(email, password);
 
         // first search for an email if it is exist in database or not
         const user = await User.findOne({ email });

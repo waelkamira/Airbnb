@@ -16,10 +16,23 @@ export default function Reservations() {
     const response = await fetch('/api/reservations')
       .then((res) => res.json())
       .then((res) => {
-        console.log('res', res);
         setReservations(res);
       });
   };
+
+  async function handleClick(reservation) {
+    const response = await fetch('/api/reservations', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(reservation),
+    });
+    if (response.ok) {
+      toast.success('This Property Deleted');
+      fetchReservations();
+    } else {
+      toast.error('Something Went Wrong Please Try Again!');
+    }
+  }
 
   return (
     <div className="p-8">
@@ -41,7 +54,7 @@ export default function Reservations() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-4 p-4">
           {reservations?.length > 0 &&
             reservations.map((reservation) => (
-              <div>
+              <div className="border rounded-lg p-2">
                 <ListRendering
                   href={`/reservations/${reservation?._id}`}
                   key={reservation?.title}
@@ -53,7 +66,12 @@ export default function Reservations() {
                   price={reservation?.price}
                   onClick={() => handleFavorite(reservation)}
                   list={reservation}
+                  startDate={reservation?.startDate}
+                  endDate={reservation?.endDate}
                 />
+                <div onClick={() => handleClick(reservation)}>
+                  <Button name={'Cancel Reservation'} type={'two'} />
+                </div>
               </div>
             ))}
         </div>

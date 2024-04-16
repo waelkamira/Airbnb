@@ -1,28 +1,34 @@
 'use client';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useSearchParams } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { ListRendering } from '../../components/ListRendering';
 
 export default function AllLists() {
   const [lists, setLists] = useState([]);
   const searchParams = useSearchParams();
-
+  const path = usePathname();
   useEffect(() => {
     fetchAllLists();
-  }, [searchParams.get('category')]);
+  }, [searchParams.get('category'), searchParams.get('country')]);
 
   const fetchAllLists = async () => {
     await fetch('/api/createList')
       .then((res) => res.json())
       .then((res) => {
-        if (searchParams.get('category') === null) {
-          setLists(res);
-        } else {
+        if (searchParams.get('category')) {
           const filteredCategories = res?.filter(
             (item) => item.category === searchParams.get('category')
           );
           setLists(filteredCategories);
+        } else if (searchParams.get('country')) {
+          const filteredCountries = res.filter(
+            (item) => item?.location?.name === searchParams.get('country')
+          );
+
+          setLists(filteredCountries);
+        } else {
+          setLists(res);
         }
       });
   };

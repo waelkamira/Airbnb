@@ -3,7 +3,6 @@ import { List } from '../models/ListModel';
 export async function POST(req) {
   await mongoose.connect(process.env.NEXT_PUBLIC_Mongodb_url);
   const data = await req.json();
-  console.log(data);
   const createNewList = await List.create({ ...data });
 
   return Response.json(createNewList);

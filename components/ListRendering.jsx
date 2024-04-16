@@ -16,6 +16,8 @@ export function ListRendering({
   price,
   onClick,
   list,
+  startDate,
+  endDate,
 }) {
   return (
     <div className="relative">
@@ -46,6 +48,24 @@ export function ListRendering({
               </h1>
             </div>
             <h1 className="text-gray-400 text-sm">{category}</h1>
+            {startDate && endDate && (
+              <div>
+                <h1>
+                  <span className="text-gray-500">startDate:</span>{' '}
+                  {new Date(startDate)
+                    .toLocaleString()
+                    .slice(0, -13)
+                    .replaceAll('/', '-')}
+                </h1>
+                <h1>
+                  <span className="text-gray-500">endDate:</span>{' '}
+                  {new Date(endDate)
+                    .toLocaleString()
+                    .slice(0, -13)
+                    .replaceAll('/', '-')}
+                </h1>
+              </div>
+            )}
             <h1>$ {price} night</h1>
           </div>
         </div>

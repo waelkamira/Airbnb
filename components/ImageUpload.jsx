@@ -17,7 +17,6 @@ export default function ImageUpload({ image }) {
     if (window !== 'undefined') {
       const listValues = JSON.parse(localStorage.getItem('listValues'));
       if (listValues?.image) {
-        //console.log('listValues?.image', listValues?.image);
         setImageUrl(listValues?.image);
       }
     }
@@ -30,7 +29,6 @@ export default function ImageUpload({ image }) {
   const handleUploadSuccess = useCallback(
     (result) => {
       if (window !== 'undefined') {
-        //console.log(result.info.secure_url);
         const listValues = JSON.parse(localStorage.getItem('listValues'));
         localStorage.setItem(
           'listValues',

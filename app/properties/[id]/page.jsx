@@ -7,10 +7,7 @@ import Skelton from '../../../components/Skelton';
 import Map from '../../../components/map/Map';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
-import { DateRange } from 'react-date-range';
 import toast from 'react-hot-toast';
-import { useSession } from 'next-auth/react';
-import { TbPhotoEdit } from 'react-icons/tb';
 import ImageUpload from '../../../components/ImageUpload';
 import Button from '../../../components/Button';
 
@@ -31,7 +28,6 @@ export default function page() {
       .then((res) => res.json())
       .then((res) => {
         const list = res?.find((list) => list._id === id);
-        console.log('list', list);
         setList(list);
         setUpdateValues({
           newPrice: list?.price,
