@@ -5,7 +5,7 @@ import ImageUpload from '../ImageUpload';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 
-export default function createListPage4({ setIsListOpen }) {
+export default function CreateListPage4({ setIsListOpen }) {
   const router = useRouter();
   function handleClick() {
     if (window !== 'undefined') {

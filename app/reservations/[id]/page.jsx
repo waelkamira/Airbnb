@@ -8,8 +8,6 @@ import Map from '../../../components/map/Map';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRange } from 'react-date-range';
-import toast from 'react-hot-toast';
-import { useSession } from 'next-auth/react';
 
 export default function Page() {
   const [list, setList] = useState('');
@@ -60,6 +58,7 @@ export default function Page() {
           </div>
           <div className="relative w-full rounded-lg overflow-hidden min-h-44 sm:min-h-72 md:min-h-96">
             <Image
+              alt={list?.location?.name}
               src={list?.image}
               layout="fill"
               objectFit="cover"

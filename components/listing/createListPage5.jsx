@@ -6,7 +6,7 @@ import Button from '../Button';
 import Input from '../Input';
 import toast from 'react-hot-toast';
 
-export default function createListPage5({ setIsListOpen }) {
+export default function CreateListPage5({ setIsListOpen }) {
   const [values, setValues] = useState({
     title: '',
     description: '',

@@ -60,6 +60,7 @@ export default function Page() {
           </div>
           <div className="relative w-full rounded-lg overflow-hidden min-h-44 sm:min-h-72 md:min-h-96">
             <Image
+              alt={list?.location?.name}
               src={list?.image}
               layout="fill"
               objectFit="cover"

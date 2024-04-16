@@ -5,7 +5,7 @@ import { IoMdClose } from 'react-icons/io';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 
-export default function createListPage3({ setIsListOpen }) {
+export default function CreateListPage3({ setIsListOpen }) {
   const router = useRouter();
   const [num, setNum] = useState({
     guests: 0,

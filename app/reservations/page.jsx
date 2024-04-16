@@ -54,7 +54,7 @@ export default function Reservations() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-4 p-4">
           {reservations?.length > 0 &&
             reservations.map((reservation) => (
-              <div className="border rounded-lg p-2">
+              <div className="border rounded-lg p-2" key={reservation?.title}>
                 <ListRendering
                   href={`/reservations/${reservation?._id}`}
                   key={reservation?.title}

@@ -35,7 +35,7 @@ export default function Page() {
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-4 p-8">
       {properties?.length > 0 &&
         properties.map((pro) => (
-          <div className="border rounded-lg p-2">
+          <div className="border rounded-lg p-2" key={pro?.title}>
             <ListRendering
               href={`/properties/${pro?._id}`}
               key={pro?.title}

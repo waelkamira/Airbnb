@@ -19,9 +19,7 @@ export default function CreateListPage1({ setIsListOpen }) {
 
   useEffect(() => {
     const listValues = JSON.parse(localStorage.getItem('listValues'));
-    if (listValues === null) {
-      return;
-    }
+
     setIsCategoryActive(listValues?.category);
   }, []);
 

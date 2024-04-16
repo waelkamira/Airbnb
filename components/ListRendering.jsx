@@ -25,6 +25,7 @@ export function ListRendering({
         <div key={key}>
           <div className="relative h-52 w-full rounded-lg overflow-hidden">
             <Image
+              alt={locationName}
               src={image}
               fill
               style={{ objectFit: 'cover' }}

@@ -58,7 +58,12 @@ export default function ImageUpload({ image }) {
             >
               {imageUrl && (
                 <div className="h-full w-full">
-                  <Image src={imageUrl} fill style={{ objectFit: 'contain' }} />
+                  <Image
+                    src={imageUrl}
+                    fill
+                    style={{ objectFit: 'contain' }}
+                    alt="image"
+                  />
                 </div>
               )}
               {!imageUrl && (

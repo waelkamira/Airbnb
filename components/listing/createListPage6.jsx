@@ -6,7 +6,7 @@ import Button from '../Button';
 import Input from '../Input';
 import toast from 'react-hot-toast';
 import Loading from '../Loading';
-export default function createListPage6({ setIsListOpen }) {
+export default function CreateListPage6({ setIsListOpen }) {
   const [price, setPrice] = useState();
   const router = useRouter();
 
