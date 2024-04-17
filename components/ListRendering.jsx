@@ -20,7 +20,7 @@ export function ListRendering({
   endDate,
 }) {
   return (
-    <div className="relative">
+    <div className="relative border rounded-lg pb-1 hover:shadow-lg">
       <Link href={href}>
         <div key={key}>
           <div className="relative h-52 w-full rounded-lg overflow-hidden">
