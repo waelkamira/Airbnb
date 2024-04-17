@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ListPages from '../components/listing/ListPages';
 import React, { useState } from 'react';
-import { FiSearch } from 'react-icons/fi';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
@@ -11,7 +10,6 @@ import Button from './Button';
 import SearchPage from '../components/search/Search';
 export default function Navbar() {
   const [isListOpen, setIsListOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const session = useSession();
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);

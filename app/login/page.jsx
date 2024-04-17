@@ -10,7 +10,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { IoMdClose } from 'react-icons/io';
-import Input from '../../components/Input';
 
 const schema = z.object({
   email: z.string().email(),
@@ -67,8 +66,11 @@ export default function LoginPage() {
     <>
       {isOpen && (
         <div
-          onClick={() => setIsOpen(false)}
-          className="flex justify-center items-center inset-0 bg-black/20 h-full p-4 absolute w-full"
+          onClick={() => {
+            setIsOpen(false);
+            router.push('/');
+          }}
+          className="flex justify-center items-center inset-0 bg-black/20 h-full p-4 absolute w-full z-50"
         >
           <form
             onClick={(e) => e.stopPropagation()}
