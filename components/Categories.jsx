@@ -14,7 +14,7 @@ export default function Categories() {
 
   return (
     <>
-      {session?.status === 'authenticated' && path === '/' && (
+      {path === '/' && (
         <div className="flex justify-between md:px-20 scrollbar overflow-x-auto border-b">
           {icons.map((item) => {
             return (
