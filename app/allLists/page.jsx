@@ -1,14 +1,14 @@
 'use client';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { ListRendering } from '../../components/ListRendering';
-
+import { useSession } from 'next-auth/react';
 export default function AllLists() {
   const [lists, setLists] = useState([]);
   const searchParams = useSearchParams();
+  const session = useSession();
 
-  const path = usePathname();
   useEffect(() => {
     fetchAllLists();
   }, [searchParams.get('category'), searchParams.get('country')]);
@@ -35,6 +35,10 @@ export default function AllLists() {
   };
 
   async function handleFavorite(list) {
+    if (session?.status === 'unauthenticated') {
+      toast.error('Please Login First!');
+      return;
+    }
     const response = await fetch('/api/createList', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },

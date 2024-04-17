@@ -57,7 +57,7 @@ export default function RegisterPage() {
     <>
       {isOpen && (
         <div
-          className="flex justify-center items-center inset-0 bg-black/20 h-full p-4 absolute"
+          className="flex justify-center items-center inset-0 bg-black/20 h-full p-4 absolute z-50"
           onClick={() => {
             setIsOpen(false);
             router.push('/');
