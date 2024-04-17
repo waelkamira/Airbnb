@@ -10,13 +10,12 @@ import toast from 'react-hot-toast';
 import Link from 'next/link';
 import { signIn, useSession } from 'next-auth/react';
 import { IoMdClose } from 'react-icons/io';
-import Input from '../../components/Input';
 
 const schema = z.object({
   email: z.string().email(),
   password: z.string().min(5),
 });
-export default function RegisterPage({ setIsListOpen }) {
+export default function RegisterPage() {
   const [isOpen, setIsOpen] = useState(true);
   const session = useSession();
   const router = useRouter();

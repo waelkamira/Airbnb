@@ -6,8 +6,8 @@ import { User } from '../models/UsersModel';
 import bcrypt from 'bcrypt';
 import GitHubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
-import { NextAuthOptions } from 'next-auth';
-export const authOptions: NextAuthOptions = {
+
+export const authOptions = {
   secret: process.env.NEXT_PUBLIC_SECRET,
   adapter: MongoDBAdapter(clientPromise),
 
